@@ -11,7 +11,8 @@ export default function HomePage() {
   const fetchMovies = async () => {
     setLoading(true);
     try {
-      const apiKey = '602ad123'; // Remplacez par votre clé API OMDb
+      // Get the API key from environment variables
+      const apiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY;
       const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=${apiKey}`);
       const data = await response.json();
       if (data.Response === 'True') {
